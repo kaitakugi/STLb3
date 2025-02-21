@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #3c3f58; /* Dark background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        span.field-error {
+		    color: red; /* Màu chữ đỏ cho thông báo lỗi */
+		    font-size: 0.875rem; /* Font nhỏ hơn một chút */
+		    margin-top: -20px;
+		    margin-bottom: 15px; /* Khoảng cách giữa lỗi và trường input */
+		    display: block; /* Đảm bảo lỗi hiển thị dưới dạng block */
+		    font-weight: bold; /* Đậm thông báo lỗi */
+		    padding-left: 5px; /* Thêm khoảng cách bên trái */
+		}
+
+
+        .register-form {
+            background: #ffffff; /* White form background */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .register-header {
+            background: #ff3f81; /* Pink header background */
+            color: white;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .btn-register {
+            background-color: #00d1c0; /* Light teal button */
+            color: white;
+            border: none;
+        }
+
+        .btn-register:hover {
+            background-color: #00a79d;
+        }
+    </style>
+</head>
+<body>
+<div class="register-form">
+    <!-- Header -->
+    <div class="register-header mb-4">
+        <span>REGISTER - ADMIN</span>
+    </div>
+
+    <!-- Form -->
+    <form th:action="@{/register/admin}" th:object="${user}" method="post">
+        <input type="text" th:field="*{username}" id="username" class="form-control" placeholder="Username"/><br>
+        <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="field-error"></span>
+        <input type="email" th:field="*{email}" id="email" class="form-control" placeholder="Email" /><br>
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="field-error"></span>
+        <input type="password" th:field="*{password}" id="password" class="form-control" placeholder="Password"/><br>
+        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="field-error"></span>
+        <button type="submit" class="btn btn-register w-100">SIGN UP</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
