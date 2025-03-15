@@ -4,7 +4,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import com.example.demo.repository.CustomRepository;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +20,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
     private CustomRepository customrepository;
 
     @Autowired
-    public CustomerUserDetailsService(CustomRepository customrepository) {
+    public CustomerUserDetailsService() {
         super();
         this.customrepository = customrepository;
     }

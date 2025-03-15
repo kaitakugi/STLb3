@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -19,7 +20,7 @@ public class Company {
     @Column(nullable = true)
     private String address;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<User> users;
 
@@ -53,5 +54,4 @@ public class Company {
     public void setAddress(String address) {
         this.address = address;
     }
-
 }

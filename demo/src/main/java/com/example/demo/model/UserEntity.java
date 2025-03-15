@@ -22,7 +22,7 @@ public class UserEntity {
 
     @NotNull(message="Password is require")
     @Size(min=6, max=100)
-    @Column(name="pass")
+    @Column(name="password")
     private String password;
 
     @NotNull(message = "Email is required")
@@ -74,17 +74,6 @@ public class UserEntity {
     }
 
     public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    public UserEntity(@NotNull(message = "Username is require") @Size(min = 6, max = 100) String username,
-                      @NotNull(message = "Password is require") @Size(min = 6, max = 100) String password,
-                      @NotNull(message = "Email is required") String email,
-                      List<Role> roles) {
-        super();
-        this.username = username;
-        this.password = password;
-        this.email = email;
         this.roles = roles;
     }
 

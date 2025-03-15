@@ -24,16 +24,12 @@ public class CompanyService {
 
     // Tạo mới công ty
     public Company createCompany(Company company) {
-        // Kiểm tra và gán giá trị mặc định nếu cần thiết
         if (company.getName() == null || company.getName().isEmpty()) {
             throw new IllegalArgumentException("Tên công ty không được để trống");
         }
-
-        // Gán địa chỉ mặc định nếu trống
         if (company.getAddress() == null || company.getAddress().isEmpty()) {
             company.setAddress("Địa chỉ mặc định");
         }
-
         return companyRepository.save(company);
     }
 
@@ -43,13 +39,10 @@ public class CompanyService {
         if (company != null) {
             company.setName(companyDetails.getName());
             company.setAddress(companyDetails.getAddress());
-            return companyRepository.save(company); // Lưu thông tin cập nhật
+            return companyRepository.save(company);
         }
         return null;
     }
-
-
-
 
     // Xóa công ty theo ID
     public void deleteCompany(Long id) {
@@ -66,8 +59,7 @@ public class CompanyService {
     public void createCompany() {
         Company company = new Company();
         company.setName("Example Name");
-        company.setAddress("Example Address"); // Đảm bảo không bị null
+        company.setAddress("Example Address");
         companyRepository.save(company);
     }
-
 }

@@ -15,7 +15,7 @@ public class User {
     @Column(nullable = false)
     private String phone;  // Số Điện Thoại
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "company_id")
     private Company company;
 
